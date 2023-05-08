@@ -1,0 +1,4 @@
+programa h& h$ h?;
+uno__%=10.32;
+"prueba"
+si @y<10) entonces
