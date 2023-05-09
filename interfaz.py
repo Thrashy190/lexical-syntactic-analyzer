@@ -4,6 +4,7 @@ from tkinter import filedialog
 import lexical_functions as lf
 from tkinter import messagebox
 import csv
+import subprocess
 
 
 class App(tk.Tk):
@@ -28,6 +29,8 @@ class App(tk.Tk):
 
         self.button2 = tk.Button(self.frame2, text="Buscar archivo", command=self.buscar_archivo)
         self.button2.grid(row=0, column=0, padx=10, pady=10)
+        self.button4 = tk.Button(self.frame2, text="Analizar sintaxis", command=self.analizar_sintaxis)
+        self.button4.grid(row=0, column=1, padx=10, pady=10)
 
         self.textarea2 = tk.Text(self.frame2, bg="white", fg="black")
         self.textarea2.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
@@ -82,6 +85,26 @@ class App(tk.Tk):
         for lexema, linea in self.error:
             self.errores.insert("", "end", values=(lexema, linea))
 
+    def analizar_sintaxis(self):
+
+        value = self.textarea2.get("1.0", "end-1c")
+        with open('test.txt', 'w') as f:
+            f.write(value)
+
+        ejecutable = "./a.out"
+        archivo_entrada = "./test.txt"
+        comando = f"{ejecutable} < {archivo_entrada}"
+        resultado = subprocess.run(comando, shell=True, capture_output=True, text=True)
+
+        print(resultado.stdout)
+        if "exitosamente" in resultado.stdout:
+            messagebox.showinfo(message=resultado.stdout, title="Analisis sintactico")
+        else:
+            messagebox.showerror(message=resultado.stdout, title="Analisis sintactico")
+
+        if resultado.stderr:
+            print("Error:", resultado.stderr)
+
     def generar_archivo_con_csv(self):
         with open('tokens.csv', 'w', newline='') as file:
             writer = csv.writer(file)
@@ -93,7 +116,7 @@ class App(tk.Tk):
             writer.writerow(["Lexema", "Linea"])
             for lexema, linea in self.error:
                 writer.writerow([lexema, linea])
-        messagebox.showinfo(message="Archivos generados correctamente", title="Título")
+        messagebox.showinfo(message="Archivos generados correctamente", title="Archivos generados")
 
 
 

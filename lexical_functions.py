@@ -8,7 +8,7 @@ logico = r'verdadero|falso'
 operador_aritmetico = r'[\+\-\*/=]'
 operador_relacional = r'<=|>=|!=|<|>|=='
 operador_logico = r'!|\|\.|&'
-palabra_reservada = r'programa|inicio|fin|leer|escribir|entero|real|cadena|logico|si|sino|entonces|mientras|hacer' \
+palabra_reservada = r'programa|inicio|fin|leer|escribir|entero|real|cadena|logico|sino|si|entonces|mientras|hacer' \
                     r'|repetir|hasta|variables'
 parentesis_abre = r'\('
 parentesis_cierra = r'\)'
@@ -158,3 +158,5 @@ def analizar_archivo(codigo_fuente):
                 i += 1
 
     return lista_tokens, lista_errores
+
+
