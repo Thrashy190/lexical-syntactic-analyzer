@@ -52,6 +52,6 @@ inicio
             escribir (dos&);
             leer ( tres% );
         fin
-    hasta ( false == verdadero );
+    hasta ( cinco == verdadero );
 
 fin

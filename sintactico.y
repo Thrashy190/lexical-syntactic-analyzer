@@ -196,8 +196,8 @@ int yyerror(char*);
 		boolean_variables DIFFERENT_TO_TOKEN boolean_variables; |
 		string_variables DIFFERENT_TO_TOKEN string_variables; |
 		string_variables EQUAL_TO_TOKEN string_variables; |
-		numeric_variables relational_operators numeric_variables; |
-		numeric_variables artimetic_operators numeric_variables; |
+		numeric_decimal_expression relational_operators numeric_decimal_expression; |
+		numeric_decimal_expression artimetic_operators numeric_decimal_expression; |
 		OPEN_BRACKET_TOKEN boolean_expression CLOSE_BRACKET_TOKEN; 
 	
 %%
