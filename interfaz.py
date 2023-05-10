@@ -119,9 +119,6 @@ class App(tk.Tk):
         messagebox.showinfo(message="Archivos generados correctamente", title="Archivos generados")
 
 
-
-
-
 if __name__ == "__main__":
     app = App()
     app.mainloop()
